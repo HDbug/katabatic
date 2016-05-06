@@ -1,1 +1,34 @@
+        def take_quiz():
+                operators = [["Add","+"],["Subtract","-"],["Multiply","*"]]
+                score = 0
+                for question_no in range(1, 11):
+                        number1 = random.randint(1,10)
+                        number2 = random.randint(1,10)
+                         operator = operators[random.randint(0,2)]
+
+                ## create expression, convert number 1 and 2 into string
+                expression = str(number1)+operator[1]+str(number2)
+                answer = eval(expression) ## execute string useing EVAL command
+
+                ## change expression for text output
+
+                 expression = str(number1)+" " + operator[0]+ " by "+ str(number2)
+
+                #test user
+                user_answer =  int(input("What is "+expression + "? "))
+                if (user_answer == answer):
+                        print ("Correct!")
+                         score += 1
+                 else:
+                        print ("Sorry, the answer is ", answer)
+                        print ("Your score was", score)
+                        return score
+
+        def input_details():
+                name = raw_input("Please enter your name ")
+
+                return name,take_quiz()
+
+                input_details()
+
 
