@@ -1,2 +1,4 @@
+#
+
 sentance = raw_input("Please enter your text here")
 alert = "your text appears in potition(s)"
