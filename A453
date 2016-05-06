@@ -1,34 +1,36 @@
-        def take_quiz():
-                operators = [["Add","+"],["Subtract","-"],["Multiply","*"]]
-                score = 0
-                for question_no in range(1, 11):
-                        number1 = random.randint(1,10)
-                        number2 = random.randint(1,10)
-                         operator = operators[random.randint(0,2)]
+# setup a few variables to be used further down
+# this approach means we can easily chance the
+# messages that are displayed to the user without
+# rewriting the whole programme
+sentence = raw_input ("Enter sentence: ")
+x=0
+message = "Your Search Word Appears at position(s) "
 
-                ## create expression, convert number 1 and 2 into string
-                expression = str(number1)+operator[1]+str(number2)
-                answer = eval(expression) ## execute string useing EVAL command
+# ask the user for their input
+print (sentence)
 
-                ## change expression for text output
+# grab the user input and write to a variable called
+# search_word
+search_word = raw_input("Enter your word: ").lower()
 
-                 expression = str(number1)+" " + operator[0]+ " by "+ str(number2)
+# now we check if the user has entered any text not
+# just pressed enter
+if sentence.find(search_word)>= 0:
+    print "success, your word is in the text."
+else:
+    print "Your word did not appear in the text, sorry try again."
 
-                #test user
-                user_answer =  int(input("What is "+expression + "? "))
-                if (user_answer == answer):
-                        print ("Correct!")
-                         score += 1
-                 else:
-                        print ("Sorry, the answer is ", answer)
-                        print ("Your score was", score)
-                        return score
+# set the whole input from the user to lower case
+# and read it into an array with a word per index
+word_list = sentence.lower().split()
 
-        def input_details():
-                name = raw_input("Please enter your name ")
+# read through the word list and add each word to
+# the variable message
+for word in word_list:
+    if word == search_word:
+        message = message + str (x+1)+ ",";
+    x += 1;
 
-                return name,take_quiz()
-
-                input_details()
-
-
+# print the message so the user can see what they
+# entered
+print (message)
